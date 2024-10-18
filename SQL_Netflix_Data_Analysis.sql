@@ -143,8 +143,8 @@ WHERE casts ILIKE '%Salman Khan%' AND release_year > EXTRACT(YEAR FROM CURRENT_D
 
 -- 14)Find the top 10 actors who have appeared in the highest number of movies produced in India.
 SELECT 
-		UNNEST(STRING_TO_ARRAY(casts, ',')) AS actors,
-		COUNT(*) AS total_content
+	UNNEST(STRING_TO_ARRAY(casts, ',')) AS actors,
+	COUNT(*) AS total_content
 FROM netflix
 WHERE country ILIKE '%India%'
 GROUP BY 1
