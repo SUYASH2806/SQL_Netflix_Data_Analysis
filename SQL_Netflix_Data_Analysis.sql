@@ -66,7 +66,8 @@ WHERE ranking = 1;
 
 
 -- 3)List all movies released in a specific year (e.g., 2020)
-SELECT * FROM netflix
+SELECT * 
+FROM netflix
 WHERE type = 'Movie' AND release_year = 2020;
 
 
@@ -81,7 +82,8 @@ LIMIT 5;
 
 
 -- 5)Identify the longest movie
-SELECT * FROM netflix
+SELECT * 
+FROM netflix
 WHERE type = 'Movie' AND duration = (SELECT MAX(duration) FROM netflix);
 
 
@@ -92,7 +94,8 @@ WHERE TO_DATE(date_added, 'Month DD, YYYY') >= CURRENT_DATE - INTERVAL '5 years'
 
 
 -- 7) Find all the movies/TV shows by director 'Rajiv Chilaka'!
-SELECT * FROM netflix
+SELECT * 
+FROM netflix
 WHERE director ILIKE '%Rajiv Chilaka%';
 
 
@@ -128,7 +131,8 @@ WHERE type = 'Movie' AND listed_in ILIKE '%Documentaries%';
 
 
 -- 12)Find all content without a director
-SELECT * FROM netflix
+SELECT * 
+FROM netflix
 WHERE director IS NULL;
 
 
@@ -139,8 +143,8 @@ WHERE casts ILIKE '%Salman Khan%' AND release_year > EXTRACT(YEAR FROM CURRENT_D
 
 -- 14)Find the top 10 actors who have appeared in the highest number of movies produced in India.
 SELECT 
-UNNEST(STRING_TO_ARRAY(casts, ',')) AS actors,
-COUNT(*) AS total_content
+		UNNEST(STRING_TO_ARRAY(casts, ',')) AS actors,
+		COUNT(*) AS total_content
 FROM netflix
 WHERE country ILIKE '%India%'
 GROUP BY 1
